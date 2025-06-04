@@ -1,21 +1,21 @@
 document.getElementById("formLogin").addEventListener("submit", function (e) {
   e.preventDefault();
-  const email = document.getElementById("email").value;
+  const user = document.getElementById("user").value;
   const password = document.getElementById("password").value;
 
-  login(email, password);
+  login(user, password);
 });
 
-function login(email, password) {
+function login(username, password) {
   let message = "";
   let alertType = "";
   localStorage.removeItem("token");
-  fetch("https://reqres.in/api/login", {
+  fetch("https://fakestoreapi.com/auth/login", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ username, password }),
   })
     .then((response) => {
       if (response.status === 200) {
