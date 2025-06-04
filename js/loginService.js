@@ -10,11 +10,10 @@ function login(email, password) {
   let message = "";
   let alertType = "";
   localStorage.removeItem("token");
-  fetch("https://reqres.in/api/login", {
+  fetch("https://fakestoreapi.com/auth/login", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
-      "x-api-key": "reqres-free-v1",
     },
     body: JSON.stringify({ email, password }),
   })
