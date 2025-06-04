@@ -99,12 +99,9 @@ function showModalUser(user) {
                         <p class="card-text">First Name : ${user.id}</p>
                         <p class="card-text">Last Name : ${user.username}</p>
                         <p class="card-text">Email : ${user.email}</p>
-                        <p class="card-text">Email : ${user.password}</p>
+                        <p class="card-text">Contraseña : ${user.password}</p>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
             </div>
         </div>
