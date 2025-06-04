@@ -24,24 +24,24 @@
       </div>
       <div class="row justify-content-center mt-3">
         <div class="col-6">
-          <div class="card bg-info-opacity-25">
-            <div class="card-header text-center">
+          <div class="card border-black border-2">
+            <div class="card-header text-center bg-success bg-opacity-25 border-black border-2">
               <h4>Login</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-dark-subtle">
               <div id="alert"></div>
               <form id="formLogin">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Correo</label>
+                  <label for="user" class="form-label">User Name</label>
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
-                    id="email"
-                    aria-describedby="emailHelp"
+                    id="user"
+                    aria-describedby="userHelp"
                     required
                   />
-                  <div id="emailHelp" class="form-text">
-                    Nunca compartiremos este correo con nadie.
+                  <div id="userlHelp" class="form-text">
+                    Nunca compartiremos este nombre con nadie.
                   </div>
                 </div>
                 <div class="mb-3">
@@ -53,7 +53,7 @@
                     required
                   />
                 </div>
-                <button type="submit" class="btn btn-primary d-block mx-auto">
+                <button type="submit" class="btn btn-primary d-block mx-auto bg-success">
                   Entrar
                 </button>
               </form>
