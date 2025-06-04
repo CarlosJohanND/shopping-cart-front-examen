@@ -1,11 +1,10 @@
-function getUsers(page) {
+function getUsers() {
   document.getElementById("cardHeader").innerHTML =
     '<h4><i class="fa-solid fa-users"></i> Listado de usuarios</h4>';
-  fetch("https://reqres.in/api/users?page=" + page, {
+  fetch("https://fakestoreapi.com/users", {
     method: "GET",
     headers: {
       "Content-type": "application/json",
-      "x-api-key": "reqres-free-v1",
     },
   })
     .then((result) => {
@@ -29,19 +28,19 @@ function getUsers(page) {
                         <th scope="col">#</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
-                        <th scope="col">Avatar</th>
+                        <th scope="col">Contraseña</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
             `;
-        response.body.data.forEach((user) => {
+        response.body.forEach((user) => {
           listUsers = listUsers.concat(`
                     <tr>
                         <td>${user.id}</td>
-                        <td>${user.first_name}</td>
-                        <td>${user.last_name}</td>
-                        <td><img src="${user.avatar}" class="img-thumbnail" alt="Avatar del usuario"></td>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>${user.password}></td>
                         <td>
                         <button type="button" class="btn btn-outline-info" onclick="showInfoUser('${user.id}')"><i class="fa-solid fa-eye"></i></button>
                         </td>
@@ -51,22 +50,6 @@ function getUsers(page) {
         listUsers = listUsers.concat(`
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#" onclick="getUsers('1')">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#" onclick="getUsers('2')">2</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
-            </nav>    
             `);
         document.getElementById("info").innerHTML = listUsers;
       } else {
@@ -77,11 +60,10 @@ function getUsers(page) {
 }
 
 function showInfoUser(userId) {
-  fetch("https://reqres.in/api/users/" + userId, {
+  fetch("https://fakestoreapi.com/users/" + userId, {
     method: "GET",
     headers: {
       "Content-type": "application/json",
-      "x-api-key": "reqres-free-v1",
     },
   })
     .then((result) => {
@@ -94,7 +76,7 @@ function showInfoUser(userId) {
     })
     .then((response) => {
       if (response.status === 200) {
-        showModalUser(response.body.data);
+        showModalUser(response.body);
       } else {
         document.getElementById("info").innerHTML =
           "<h3>No se encontro el usuario</h3>";
@@ -113,13 +95,11 @@ function showModalUser(user) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="card">
-                    <img src="${user.avatar}" class="card-img-top" alt="Avatar user">
-                    <div class="card-body">
                         <h5 class="card-title">User info</h5>
-                        <p class="card-text">First Name : ${user.first_name}</p>
-                        <p class="card-text">Last Name : ${user.last_name}</p>
+                        <p class="card-text">First Name : ${user.id}</p>
+                        <p class="card-text">Last Name : ${user.username}</p>
                         <p class="card-text">Email : ${user.email}</p>
+                        <p class="card-text">Email : ${user.password}</p>
                     </div>
                 </div>
             </div>
