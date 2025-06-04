@@ -10,7 +10,7 @@ function login(email, password) {
   let message = "";
   let alertType = "";
   localStorage.removeItem("token");
-  fetch("https://fakestoreapi.com/auth/login", {
+  fetch("https://reqres.in/api/login", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
