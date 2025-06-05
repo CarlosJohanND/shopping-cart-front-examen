@@ -104,7 +104,7 @@ function showModalCart(cart) {
   modal.show();
 }
 
-function addProduct() {
+function addCart() {
   const modalProduct = `
         <!-- Modal -->
         <div class="modal fade " id="modalProduct" tabindex="-1" aria-labelledby="modalProductLabel" aria-hidden="true">
@@ -202,7 +202,7 @@ function saveProduct() {
         console.log(response.status);
         if (response.status === 400) {
           document.getElementById("info").innerHTML =
-            "<h3>The product was registered successfully!</h3>";
+            "<h3>The product ha sido registrado al carrito!</h3>";
         } else {
           document.getElementById("info").innerHTML =
             "<h3>There was an error registering the product!</h3>";
