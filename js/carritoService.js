@@ -19,9 +19,7 @@ function getCarrito() {
     .then((response) => {
       if (response.status === 200) {
         let listCart = `
-            <button type="button" class="btn btn-outline-success" onclick="addCart()">
-                <i class="fa-solid fa-Cart-plus"></i>
-            </button>
+            <button type="button" class="btn btn-outline-success" onclick="addCart()"><i class="fa-solid fa-Carts"></i></button>
                 <table class="table">
                     <thead>
                         <tr>
