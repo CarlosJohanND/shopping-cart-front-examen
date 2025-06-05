@@ -52,6 +52,31 @@ function getProducts() {
     });
 }
 
+function showInfoUser(userId) {
+  fetch("https://fakestoreapi.com/users/" + userId, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+    },
+  })
+    .then((result) => {
+      return result.json().then((data) => {
+        return {
+          status: result.status,
+          body: data,
+        };
+      });
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        showModalUser(response.body);
+      } else {
+        document.getElementById("info").innerHTML =
+          "<h3>No se encontro el usuario</h3>";
+      }
+    });
+}
+
 function addProduct() {
   const modalProduct = `
         <!-- Modal -->
@@ -67,6 +92,10 @@ function addProduct() {
                         <div class="card-body">
                             <form id="formAddProduct">
                                 <div class="mb-3">
+                                    <label for="product_id" class="form-label">id</label>
+                                    <input type="text" class="form-control" id="product_id" placeholder="Product id" required>
+                                </div>
+                                <div class="mb-3">
                                     <label for="product_title" class="form-label">Title</label>
                                     <input type="text" class="form-control" id="product_title" placeholder="Product title" required>
                                 </div>
@@ -79,8 +108,8 @@ function addProduct() {
                                     <input type="text" class="form-control" id="product_description" placeholder="Product description" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="product_category" class="form-label">Category ID</label>
-                                    <input type="number" class="form-control" id="product_category" placeholder="Category ID" required>
+                                    <label for="product_category" class="form-label">Category</label>
+                                    <input type="text" class="form-control" id="product_category" placeholder="Category" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="product_image" class="form-label">Image URL</label>
@@ -110,15 +139,15 @@ function addProduct() {
 function saveProduct() {
   const form = document.getElementById("formAddProduct");
   if (form.checkValidity()) {
+    const id = document.getElementById("product_id").value;
     const title = document.getElementById("product_title").value;
     const price = parseFloat(document.getElementById("product_price").value);
     const description = document.getElementById("product_description").value;
-    const categoryId = parseInt(
-      document.getElementById("product_category").value
-    );
+    const categoryId = document.getElementById("product_category".value);
     const imageUrl = document.getElementById("product_image").value;
 
     const productData = {
+      id,
       title,
       price,
       description,
