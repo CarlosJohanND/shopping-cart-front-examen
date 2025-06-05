@@ -35,6 +35,8 @@ function getProducts() {
             <div class="card-body">
               <p class="card-text">${element.title} </p>
               <p class="card-text">Precio: $${element.price} </p>
+              <button type="button" class="btn btn-outline-info" onclick="showInfoProduct('${element.id}')"><i class="fa-solid fa-eye"></i></button>
+
             </div>
           </div>
 
@@ -52,8 +54,8 @@ function getProducts() {
     });
 }
 
-function showInfoUser(userId) {
-  fetch("https://fakestoreapi.com/users/" + userId, {
+function showInfoProduct(productId) {
+  fetch("https://fakestoreapi.com/products/" + productId, {
     method: "GET",
     headers: {
       "Content-type": "application/json",
@@ -69,12 +71,40 @@ function showInfoUser(userId) {
     })
     .then((response) => {
       if (response.status === 200) {
-        showModalUser(response.body);
+        showModalProduct(response.body);
       } else {
         document.getElementById("info").innerHTML =
-          "<h3>No se encontro el usuario</h3>";
+          "<h3>No se encontro el Producto</h3>";
       }
     });
+}
+function showModalProduct(product) {
+  const modalProduct = `
+        <!-- Modal -->
+        <div class="modal fade" id="modalProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-user"></i> Show User</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                        <h5 class="card-title">product info</h5>
+                        <img src="${product.image}" class="card-img-top" alt="imagen del producto">
+                        <p class="card-text">ID : ${product.id}</p>
+                        <p class="card-text">Nombre : ${product.title}</p>
+                        <p class="card-text">Price : ${product.price}</p>
+                        <p class="card-text">Descripcion : ${product.description}</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    `;
+  document.getElementById("showModal").innerHTML = modalProduct;
+  const modal = new bootstrap.Modal(document.getElementById("modalProduct"));
+  modal.show();
 }
 
 function addProduct() {
