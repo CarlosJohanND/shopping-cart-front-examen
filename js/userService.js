@@ -25,11 +25,12 @@ function getUsers() {
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Contraseña</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">UserName</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col">Mas informacion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +41,8 @@ function getUsers() {
                         <td>${user.id}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
-                        <td>${user.password}></td>
+                        <td>${user.phone}</td>
+                        <td>${user.address.city}</td>
                         <td>
                         <button type="button" class="btn btn-outline-info" onclick="showInfoUser('${user.id}')"><i class="fa-solid fa-eye"></i></button>
                         </td>
@@ -96,8 +98,8 @@ function showModalUser(user) {
             </div>
             <div class="modal-body">
                         <h5 class="card-title">User info</h5>
-                        <p class="card-text">First Name : ${user.id}</p>
-                        <p class="card-text">Last Name : ${user.username}</p>
+                        <p class="card-text">ID : ${user.id}</p>
+                        <p class="card-text">Pimer nombre : ${user.name.firstname}</p>
                         <p class="card-text">Email : ${user.email}</p>
                         <p class="card-text">Contraseña : ${user.password}</p>
                     </div>
@@ -127,20 +129,20 @@ function addUser() {
                     <div class="card-body">
                         <form id="formAddUser">
                             <div class="mb-3">
-                                <label for="first_name" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="First name input" required>
+                                <label for="ID" class="form-label">ID</label>
+                                <input type="text" class="form-control" id="ID" placeholder="id name input" required>
                             </div>
                             <div class="mb-3">
-                                <label for="last_name" class="form-label">Last name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Last name input" required>
+                                <label for="username" class="form-label">user name</label>
+                                <input type="text" class="form-control" id="username" placeholder="user name input" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" placeholder="Email input" required>
                             </div>
                             <div class="mb-3">
-                                <label for="avatar" class="form-label">Avatar</label>
-                                <input type="url" class="form-control" id="avatar" placeholder="Avatar input url" required>
+                                <label for="password" class="form-label">password</label>
+                                <input type="password" class="form-control" id="password" placeholder="password input" required>
                             </div>
                             <div class="mb-3 text-center">
                                 <button class="btn btn-success" type="button" onclick="saveUser()">
@@ -166,17 +168,16 @@ function addUser() {
 function saveUser() {
   const form = document.getElementById("formAddUser");
   if (form.checkValidity()) {
-    const first_name = document.getElementById("first_name").value;
-    const last_name = document.getElementById("last_name").value;
+    const id = document.getElementById("ID").value;
+    const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
-    const avatar = document.getElementById("avatar").value;
-    const userData = { first_name, last_name, email, avatar };
+    const password = document.getElementById("password").value;
+    const userData = { id, username, email, password };
 
-    fetch("https://reqres.in/api/users", {
+    fetch("https://fakestoreapi.com/users", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
-        "x-api-key": "reqres-free-v1",
       },
       body: JSON.stringify(userData),
     })
@@ -189,7 +190,7 @@ function saveUser() {
         });
       })
       .then((response) => {
-        if (response.status === 201) {
+        if (response.status === 200) {
           document.getElementById("info").innerHTML =
             "<h3>The user was register success!</h3>";
         } else {
