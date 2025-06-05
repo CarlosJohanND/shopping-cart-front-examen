@@ -22,7 +22,7 @@ function getUsers() {
             <button type="button" class="btn btn-outline-success" onclick="addUser()">
                 <i class="fa-solid fa-user-plus"></i>
             </button>
-                <table class="table">
+                <table class="table border-black border-2 mt-3">
                     <thead>
                         <tr>
                         <th scope="col">ID</th>
@@ -120,7 +120,7 @@ function addUser() {
         <div class="modal fade" id="modalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-success bg-opacity-25">
                 <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-user-plus"></i> Add User</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
