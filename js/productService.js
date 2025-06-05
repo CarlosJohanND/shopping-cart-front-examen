@@ -30,9 +30,9 @@ function getProducts() {
           const element = Response.body[index];
           products += `
           
-          <div class="card" style="width: 18rem;">
-            <img src="${element.image}" class="card-img-top" alt="imagen del producto">
-            <div class="card-body">
+          <div class="card border-black border-2" style="width: 18rem;">
+            <img src="${element.image}" class="card-img-top " alt="imagen del producto">
+            <div class="card-body bg-dark bg-opacity-10">
               <p class="card-text">${element.title} </p>
               <p class="card-text">Precio: $${element.price} </p>
               <button type="button" class="btn btn-outline-info" onclick="showInfoProduct('${element.id}')"><i class="fa-solid fa-eye"></i></button>
@@ -83,12 +83,12 @@ function showModalProduct(product) {
         <!-- Modal -->
         <div class="modal fade" id="modalProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-content ">
+            <div class="modal-header bg-success bg-opacity-25">
                 <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-user"></i> Show User</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body ">
                         <h5 class="card-title">product info</h5>
                         <img src="${product.image}" class="card-img-top" alt="imagen del producto">
                         <p class="card-text">ID : ${product.id}</p>
@@ -110,10 +110,10 @@ function showModalProduct(product) {
 function addProduct() {
   const modalProduct = `
         <!-- Modal -->
-        <div class="modal fade" id="modalProduct" tabindex="-1" aria-labelledby="modalProductLabel" aria-hidden="true">
+        <div class="modal fade " id="modalProduct" tabindex="-1" aria-labelledby="modalProductLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-success bg-opacity-25">
                     <h1 class="modal-title fs-5" id="modalProductLabel"><i class="fa-solid fa-box"></i> Add Product</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -154,7 +154,7 @@ function addProduct() {
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer bg-dark-subtle">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
