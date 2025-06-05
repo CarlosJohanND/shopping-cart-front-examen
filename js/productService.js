@@ -3,7 +3,7 @@ function getProducts() {
     '<h4><i class="fa-solid fa-box"></i> Carrusel de productos</h4>';
   document.getElementById("info").innerHTML = "";
 
-  fetch("https://api.escuelajs.co/api/v1/products", {
+  fetch("https://fakestoreapi.com/products", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -31,10 +31,10 @@ function getProducts() {
           products += `
           
           <div class="card" style="width: 18rem;">
-            <img src="${element.images}" class="card-img-top" alt="Avatar del producto">
+            <img src="${element.image}" class="card-img-top" alt="imagen del producto">
             <div class="card-body">
               <p class="card-text">${element.title} </p>
-              <p class="card-text">${element.price} </p>
+              <p class="card-text">Precio: $${element.price} </p>
             </div>
           </div>
 
